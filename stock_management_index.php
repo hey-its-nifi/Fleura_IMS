@@ -20,7 +20,7 @@ require_once "config.php";
         <div id="menu-bar" class="fas fa-bars"></div>
         <nav class="navbar">
             <a href="#"><?php echo $_SESSION['username'];?></a>
-            <a href= "logout.php">Logout</a>
+            <a href= "logout.php" class='logout_confirmation'>Logout</a>
         </nav>
     </header>
     
@@ -92,16 +92,33 @@ require_once "config.php";
     <!--content section ends-->
 
 
+
+
+<!--Javascript validation starts-->  
 <script>
- var elems = document.getElementsByClassName('confirmation');
+    //delete confirmation inorder to delete a stock item
+    var elems = document.getElementsByClassName('confirmation');
     var confirmIt = function (e) {
-        if (!confirm('Are you sure?')) e.preventDefault();
+        if (!confirm('Are you sure that you want to delete the selected item?')) e.preventDefault();
     };
 
     for (var i = 0, l = elems.length; i < l; i++) {
         elems[i].addEventListener('click', confirmIt, false);
     }
+
+
+    //logout confirmation
+    var y = document.getElementsByClassName('logout_confirmation');
+    var confirmIt = function (e) {
+        if (!confirm('Do you want to logout?')) e.preventDefault();
+    };
+
+    for (var i = 0, l = y.length; i < l; i++) {
+        y[i].addEventListener('click', confirmIt, false);
+    }
 </script>
+<!--Javascript validation ends-->  
+
 
 </body>
 </html>
